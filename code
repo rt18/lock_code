@@ -1,0 +1,25 @@
+module lock(sw,conf,led1,led2);
+	input conf;
+	input[3:0] sw;
+	output led1;
+	output led2;
+	
+	reg led1 = 1;
+	reg led2 = 1;
+				
+	always@(negedge conf)
+	begin
+		if(sw == 4'b0001)
+			begin
+				led2 = 1;
+				led1 = 0;
+				
+			end
+		else 
+			begin
+				led1 = 1;
+				led2 = 0;
+			end
+	end
+	
+endmodule
